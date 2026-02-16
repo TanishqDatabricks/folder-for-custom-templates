@@ -1,0 +1,11 @@
+resources:
+  pipelines:
+    simple_pipeline:
+      name: {{.project_name}}_pipeline
+      catalog: main
+      schema: {{`${var.schema}`}}
+      serverless: true
+      libraries:
+        - notebook:
+            path: ../src/{{.project_name}}_pipeline.ipynb
+

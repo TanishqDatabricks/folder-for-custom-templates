@@ -1,0 +1,22 @@
+{
+  "properties": {
+    "project_name": {
+      "type": "string",
+      "default": "my_project",
+      "description": "Name of the project"
+    },
+    "include_hello_world_job": {
+      "type": "string",
+      "description": "Include a job that runs a notebook",
+      "enum": ["yes", "no"],
+      "default": "yes"
+    },
+    "include_dlt_pipeline": {
+      "type": "string",
+      "description": "Include a Spark Declarative Pipeline?",
+      "enum": ["yes", "no"],
+      "default": "yes"
+    }
+  },
+  "success_message": "\n✅ Your Databricks Asset Bundle has been created!\n\nNext steps:\n1. cd {{.project_name}}\n2. databricks bundle validate\n3. databricks bundle deploy\n"
+}

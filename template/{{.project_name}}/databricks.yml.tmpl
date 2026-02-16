@@ -1,0 +1,19 @@
+bundle:
+  name: {{.project_name}}
+
+variables:
+  catalog:
+    description: Unity Catalog name
+    default: main
+  schema:
+    description: Schema name (defaults to user's name)
+    default: {{`${workspace.current_user.userName}`}}
+
+# Include resource files based on template choices
+include:
+{{if eq .include_hello_world_job "yes"}}
+  - resources/sample_job.job.yml
+{{end}}
+{{if eq .include_dlt_pipeline "yes"}}
+  - resources/sample_pipeline.pipeline.yml
+{{end}}
