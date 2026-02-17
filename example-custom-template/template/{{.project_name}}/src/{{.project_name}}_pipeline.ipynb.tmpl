@@ -1,4 +1,4 @@
-{{if ne .include_dlt_pipeline "yes"}}{{skip}}{{end}}
+{{if ne .include_dlt_pipeline "yes"}}{{skip "Excluded: include_dlt_pipeline is not yes"}}{{end}}
 {
   "cells": [
     {

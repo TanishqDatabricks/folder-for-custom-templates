@@ -15,7 +15,7 @@
     },
     "include_dlt_pipeline": {
       "type": "string",
-      "description": "Include a Spark Declarative Pipeline?",
+      "description": "Include a Spark Declarative Pipeline",
       "enum": ["yes", "no"],
       "default": "yes"
     }

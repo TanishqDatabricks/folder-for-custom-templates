@@ -1,4 +1,4 @@
-{{if ne .include_hello_world_job "yes"}}{{skip}}{{end}}
+{{if ne .include_hello_world_job "yes"}}{{skip "Excluded: include_hello_world_job is not yes"}}{{end}}
 {
   "cells": [
     {
