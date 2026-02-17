@@ -4,7 +4,7 @@ This is a simple example folder to get started with custom bundle templates in t
 The example template demonstrates conditional logic to include or exclude resources based on user input. 
 
 ## Folder for Custom Templates Structure
-To use [custom templates in the workspace](https://docs.google.com/document/d/1b1NAxIMNhL5wiFCo95qqKm5q8GN8AvTg6tpKyuqZ7Hg/edit?tab=t.0#heading=h.xmytrhd54qi0), store all templates that you want to use in a single folder/repo: 
+To use [custom templates in the workspace](https://docs.google.com/document/d/1b1NAxIMNhL5wiFCo95qqKm5q8GN8AvTg6tpKyuqZ7Hg/edit?usp=sharing), store all templates that you want to use in a single folder/repo: 
 ```
 folder-for-custom-templates/
 ├── example custom template
