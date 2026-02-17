@@ -1,4 +1,6 @@
 {
+  "name": "Example Custom Template",
+  "description": "An example custom template to create a project that follows best practices!",
   "properties": {
     "project_name": {
       "type": "string",
