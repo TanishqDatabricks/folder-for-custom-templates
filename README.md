@@ -11,6 +11,17 @@ This template allows you to optionally create a:
 
 If you select "no" for either option during initialization, those resources will not be created during bundle initialization.
 
+## Folder for Custom Templates Structure
+To use [custom templates in the workspace](https://docs.google.com/document/d/1b1NAxIMNhL5wiFCo95qqKm5q8GN8AvTg6tpKyuqZ7Hg/edit?tab=t.0#heading=h.xmytrhd54qi0), store all templates that you want to use in a single folder/repo: 
+```
+folder-for-custom-templates/
+├── example-custom-template 
+├── custom-template-2
+├── custom-template-3
+├── ...         
+```
+Note that the name of each template is derived from the respective folder name. 
+
 ## Template Structure
 
 ```
@@ -26,16 +37,6 @@ example-custom-template/
         └── src/
             ├── hello_world_notebook.ipynb    
             └── {{.project_name}}_pipeline.ipynb            
-```
-
-## Folder for Custom Templates Structure
-To use [custom templates in the workspace](https://docs.google.com/document/d/1b1NAxIMNhL5wiFCo95qqKm5q8GN8AvTg6tpKyuqZ7Hg/edit?tab=t.0#heading=h.xmytrhd54qi0), store all templates that you want to use in a single folder/repo: 
-```
-folder-for-custom-templates/
-├── custom-template-1    
-├── custom-template-2
-├── custom-template-3
-├── ...         
 ```
 
 ## Go template syntax
