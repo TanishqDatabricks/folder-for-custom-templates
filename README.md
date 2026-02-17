@@ -1,6 +1,7 @@
-# Example Databricks Custom Bundle Template
+# Example folder for custom templates
 
-This is a simple example template for Databricks Asset Bundles (DAB) that demonstrates condiitonal logic to include or exclude resources based on user input.
+This is a simple example folder to get started with custom bundle templates in the workspace. 
+The example template demonstrates conditional logic to include or exclude resources based on user input. 
 
 ## What This Template Includes
 
