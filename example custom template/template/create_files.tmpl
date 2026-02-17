@@ -1,5 +1,5 @@
 {{- /* Conditionally skip files based on user choices */ -}}
-{{- skip "__preamble" -}}
+{{- skip "create_files" -}}
 
 {{- if ne .include_hello_world_job "yes"}}
   {{skip "{{.project_name}}/src/hello_world.ipynb"}}

@@ -19,7 +19,7 @@ Note that the name of each template is derived from the respective folder name.
 example custom template/
 ├── databricks_template_schema.json                  # Defines template inputs
 └── template/
-    ├── __preamble.tmpl                              # Conditionally skips files based on user input
+    ├── create_files.tmpl                            # Create files based on user input
     └── {{.project_name}}/                           # Templated project directory
         ├── databricks.yml.tmpl                      # Bundle configuration with conditional logic
         ├── resources/
@@ -41,7 +41,7 @@ If you select "no" for either option during initialization, those resources will
 
 ## How Conditional File Generation Works
 
-The `__preamble.tmpl` is processed first during bundle initialization and uses the `skip` function to conditionally exclude files from generation based on user input:
+The `create_files.tmpl` is processed first during bundle initialization and uses the `skip` function to conditionally exclude files from generation based on user input:
 
 ```go
 {{- if ne .include_hello_world_job "yes"}}
