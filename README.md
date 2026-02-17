@@ -16,18 +16,18 @@ Note that the name of each template is derived from the respective folder name.
 
 ## Template Structure
 ```
-example-custom-template/
+example custom template/
 ├── databricks_template_schema.json                  # Defines template inputs
-├── README.md                                        # This file
 └── template/
+    ├── __preamble.tmpl                              # Conditionally skips files based on user input
     └── {{.project_name}}/                           # Templated project directory
         ├── databricks.yml.tmpl                      # Bundle configuration with conditional logic
-        └── resources/
-            ├── sample_job.job.yml.tmpl              # YAML with job configuration 
-            └── sample_pipeline.pipeline.yml.tmpl    # YAML with pipeline configuration 
+        ├── resources/
+        │   ├── sample_job.job.yml.tmpl              # Job configuration (uses {{.project_name}})
+        │   └── sample_pipeline.pipeline.yml.tmpl    # Pipeline configuration (uses {{.project_name}})
         └── src/
-            ├── hello_world_notebook.ipynb    
-            └── {{.project_name}}_pipeline.ipynb            
+            ├── hello_world.ipynb                    # Static notebook (no template variables)
+            └── {{.project_name}}_pipeline.ipynb.tmpl 
 ```
 
 ## What This Template Includes
@@ -39,16 +39,38 @@ This template allows you to optionally create a:
 
 If you select "no" for either option during initialization, those resources will not be created during bundle initialization.
 
-## Go template syntax
+## How Conditional File Generation Works
 
-The `databricks.yml.tmpl` uses Go template syntax to conditionally include resources:
+The `__preamble.tmpl` is processed first during bundle initialization and uses the `skip` function to conditionally exclude files from generation based on user input:
+
+```go
+{{- if ne .include_hello_world_job "yes"}}
+  {{skip "{{.project_name}}/src/hello_world.ipynb"}}
+  {{skip "{{.project_name}}/resources/sample_job.job.yml"}}
+{{- end}}
+
+{{- if ne .include_dlt_pipeline "yes"}}
+  {{skip "{{.project_name}}/src/{{.project_name}}_pipeline.ipynb"}}
+  {{skip "{{.project_name}}/resources/sample_pipeline.pipeline.yml"}}
+{{- end}}
+```
+
+Files only need the `.tmpl` extension if they use Go template syntax within them:
+- Files containing template variables (e.g., `{{.project_name}}`)
+- Files with conditional logic (e.g., `{{if}}` statements)
+
+The `databricks.yml.tmpl` also uses Go template syntax to conditionally include resource files in the bundle to ensure the `include:` section only appears when at least one resource is selected:
 
 ```yaml
-{{if eq .include_hello_world_job "yes"}}
-  jobs:
-    hello_world_job:
-      # Job configuration...
-{{end}}
+{{- if or (eq .include_hello_world_job "yes") (eq .include_dlt_pipeline "yes")}}
+include:
+{{- if eq .include_hello_world_job "yes"}}
+  - resources/sample_job.job.yml
+{{- end}}
+{{- if eq .include_dlt_pipeline "yes"}}
+  - resources/sample_pipeline.pipeline.yml
+{{- end}}
+{{- end}}
 ```
 
 ## Learn More

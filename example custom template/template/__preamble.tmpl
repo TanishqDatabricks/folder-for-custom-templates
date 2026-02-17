@@ -1,0 +1,12 @@
+{{- /* Conditionally skip files based on user choices */ -}}
+{{- skip "__preamble" -}}
+
+{{- if ne .include_hello_world_job "yes"}}
+  {{skip "{{.project_name}}/src/hello_world.ipynb"}}
+  {{skip "{{.project_name}}/resources/sample_job.job.yml"}}
+{{- end}}
+
+{{- if ne .include_dlt_pipeline "yes"}}
+  {{skip "{{.project_name}}/src/{{.project_name}}_pipeline.ipynb"}}
+  {{skip "{{.project_name}}/resources/sample_pipeline.pipeline.yml"}}
+{{- end}}

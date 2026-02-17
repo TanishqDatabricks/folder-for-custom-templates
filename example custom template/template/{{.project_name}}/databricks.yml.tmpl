@@ -10,10 +10,12 @@ variables:
     default: {{`${workspace.current_user.userName}`}}
 
 # Include resource files based on template choices
+{{- if or (eq .include_hello_world_job "yes") (eq .include_dlt_pipeline "yes")}}
 include:
-{{if eq .include_hello_world_job "yes"}}
+{{- if eq .include_hello_world_job "yes"}}
   - resources/sample_job.job.yml
-{{end}}
-{{if eq .include_dlt_pipeline "yes"}}
+{{- end}}
+{{- if eq .include_dlt_pipeline "yes"}}
   - resources/sample_pipeline.pipeline.yml
-{{end}}
+{{- end}}
+{{- end}}
