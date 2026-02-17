@@ -9,20 +9,20 @@ This template allows you to optionally create a:
 1. Job with a notebook task 
 2. Spark Declarative Pipeline 
 
-If you select "no" for either option during initialization, those resources will not be created in your bundle.
+If you select "no" for either option during initialization, those resources will not be created during bundle initialization.
 
 ## Template Structure
 
 ```
 example-custom-template/
-├── databricks_template_schema.json                      # Defines template inputs
-├── README.md                                            # This file
+├── databricks_template_schema.json                  # Defines template inputs
+├── README.md                                        # This file
 └── template/
-    └── {{.project_name}}/                               # Templated project directory
-        ├── databricks.yml.tmpl                          # Bundle configuration with conditional logic
+    └── {{.project_name}}/                           # Templated project directory
+        ├── databricks.yml.tmpl                      # Bundle configuration with conditional logic
         └── resources/
-            ├── sample_job.job.yml.tmpl                  # YAML with job configuration 
-            └── sample_pipeline.pipeline.yml.tmpl        # YAML with pipeline configuration 
+            ├── sample_job.job.yml.tmpl              # YAML with job configuration 
+            └── sample_pipeline.pipeline.yml.tmpl    # YAML with pipeline configuration 
         └── src/
             ├── hello_world_notebook.ipynb    
             └── {{.project_name}}_pipeline.ipynb            
