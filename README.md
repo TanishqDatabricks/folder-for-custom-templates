@@ -26,7 +26,7 @@ example custom template/
         │   ├── sample_job.job.yml.tmpl              # Job configuration (uses {{.project_name}})
         │   └── sample_pipeline.pipeline.yml.tmpl    # Pipeline configuration (uses {{.project_name}})
         └── src/
-            ├── hello_world.ipynb                    # Static notebook (no template variables)
+            ├── hello_world.ipynb                    
             └── {{.project_name}}_pipeline.ipynb.tmpl 
 ```
 
