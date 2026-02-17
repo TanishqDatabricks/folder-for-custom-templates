@@ -7,7 +7,7 @@ variables:
     default: main
   schema:
     description: Schema name (defaults to user's name)
-    default: {{`${workspace.current_user.userName}`}}
+    default: {{`${workspace.current_user.short_name}`}}
 
 # Include resource files based on template choices
 {{- if or (eq .include_hello_world_job "yes") (eq .include_dlt_pipeline "yes")}}
